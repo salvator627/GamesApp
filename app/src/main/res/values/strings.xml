@@ -2,4 +2,8 @@
     <string name="app_name">OnlineGames</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="action">ACTION</string>
+    <string name="mmorpg">MMORPG</string>
+    <string name="shooter">SHOOTER</string>
 </resources>
