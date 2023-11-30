@@ -11,4 +11,7 @@ interface Api {
 
     @GET("games?category=action")
     fun action(): Call<ArrayList<Datagames>>
+
+    @GET("games?category=shooter")
+    fun shoot(): Call<ArrayList<Datagames>>
 }

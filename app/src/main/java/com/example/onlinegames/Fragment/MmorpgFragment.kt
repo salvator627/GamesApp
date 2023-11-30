@@ -3,6 +3,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.onlinegames.Adapter.MmorpgAdapter
@@ -38,12 +39,18 @@ class MmorpgFragment : Fragment() {
                 response.body()?.let { list.addAll(it) }
                 val adapter = MmorpgAdapter(list)
                 rv.adapter = adapter
+
+                adapter.setOnItemClickCallback(object : MmorpgAdapter.onItemClick{
+                    override fun onItemClicked(datagames: Datagames) {
+                        Toast.makeText(context, "hello", Toast.LENGTH_SHORT).show()
+                    }
+
+                })
             }
 
             override fun onFailure(call: Call<ArrayList<Datagames>>, t: Throwable) {
                 TODO("Not yet implemented")
             }
-
         })
     }
 

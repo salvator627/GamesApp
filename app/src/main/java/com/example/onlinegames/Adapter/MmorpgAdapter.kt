@@ -11,6 +11,11 @@ import com.example.onlinegames.Data.Datagames
 import com.example.onlinegames.R
 
 class MmorpgAdapter(private val list: ArrayList<Datagames>): RecyclerView.Adapter<MmorpgAdapter.ViewHolder>() {
+
+    private var onItemClickCallback : onItemClick? = null
+    fun setOnItemClickCallback(onItemClick: onItemClick){
+        this.onItemClickCallback = onItemClick
+    }
     inner class ViewHolder(itemview: View): RecyclerView.ViewHolder(itemview){
         fun bind(data : Datagames){
             with(itemView){
@@ -20,6 +25,10 @@ class MmorpgAdapter(private val list: ArrayList<Datagames>): RecyclerView.Adapte
                     .into(img)
                 val text = findViewById<TextView>(R.id.textView)
                 text.text = data.title
+
+                itemView.setOnClickListener {
+                    onItemClickCallback?.onItemClicked(data)
+                }
             }
         }
     }
@@ -27,8 +36,13 @@ class MmorpgAdapter(private val list: ArrayList<Datagames>): RecyclerView.Adapte
        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_view,parent,false)
         return ViewHolder(view)
     }
+
     override fun getItemCount(): Int = list.size
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(list[position])
+    }
+    interface onItemClick{
+        fun onItemClicked(datagames: Datagames)
     }
 }
