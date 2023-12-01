@@ -5,4 +5,5 @@ data class Datagames(
     val thumbnail : String,
     //data complex
     val platform : String
+
 )
