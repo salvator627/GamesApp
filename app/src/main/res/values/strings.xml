@@ -6,4 +6,6 @@
     <string name="action">ACTION</string>
     <string name="mmorpg">MMORPG</string>
     <string name="shooter">SHOOTER</string>
+
+    <string name="test">Test 123</string>
 </resources>

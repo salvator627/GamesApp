@@ -41,6 +41,13 @@ class ActionFragment : Fragment() {
                 response.body()?. let { list.addAll(it) }
                 val adapter = ActionAdapter(list)
                 rv.adapter = adapter
+
+                adapter.setOnItemclickcallback(object : ActionAdapter.onItemClick{
+                    override fun onItemclick(datagames: Datagames) {
+                        Toast.makeText(context, datagames.title , Toast.LENGTH_SHORT).show()
+                    }
+
+                })
             }
 
             override fun onFailure(call: Call<ArrayList<Datagames>>, t: Throwable) {

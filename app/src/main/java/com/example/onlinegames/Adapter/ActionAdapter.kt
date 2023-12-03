@@ -11,6 +11,12 @@ import com.example.onlinegames.Data.Datagames
 import com.example.onlinegames.R
 
 class ActionAdapter(private val list: ArrayList<Datagames>) : RecyclerView.Adapter<ActionAdapter.ViewHolder>() {
+
+    private var ItemClickCallback : onItemClick? = null
+
+    fun setOnItemclickcallback(onItemClick: onItemClick){
+        this.ItemClickCallback = onItemClick
+    }
     inner class ViewHolder(itemview : View): RecyclerView.ViewHolder(itemview){
         fun bind(datagames: Datagames){
             with(itemView){
@@ -20,6 +26,8 @@ class ActionAdapter(private val list: ArrayList<Datagames>) : RecyclerView.Adapt
                     .into(img)
                 val text = findViewById<TextView>(R.id.textView)
                 text.text = datagames.title
+
+                itemView.setOnClickListener { ItemClickCallback?.onItemclick(datagames) }
             }
         }
     }
@@ -30,5 +38,8 @@ class ActionAdapter(private val list: ArrayList<Datagames>) : RecyclerView.Adapt
     override fun getItemCount(): Int = list.size
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(list[position])
+    }
+    interface onItemClick{
+        fun onItemclick(datagames: Datagames)
     }
 }

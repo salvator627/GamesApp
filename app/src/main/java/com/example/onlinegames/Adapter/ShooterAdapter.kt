@@ -11,6 +11,12 @@ import com.example.onlinegames.Data.Datagames
 import com.example.onlinegames.R
 
 class ShooterAdapter(private val list: ArrayList<Datagames>): RecyclerView.Adapter<ShooterAdapter.ViewHolder>() {
+
+    private var onItemclickCallback : onItemClick? = null
+
+    fun setOnItemClickCallback (onItemClick : onItemClick){
+        this.onItemclickCallback = onItemClick
+    }
     inner class ViewHolder(itemview : View): RecyclerView.ViewHolder(itemview){
         fun bind(datagames: Datagames){
             with(itemView){
@@ -20,6 +26,8 @@ class ShooterAdapter(private val list: ArrayList<Datagames>): RecyclerView.Adapt
                     .into(image)
                 val text = findViewById<TextView>(R.id.textView)
                 text.text = datagames.title
+
+                itemView.setOnClickListener { onItemclickCallback?.onItemclicked(datagames) }
             }
         }
     }
@@ -30,5 +38,8 @@ class ShooterAdapter(private val list: ArrayList<Datagames>): RecyclerView.Adapt
     override fun getItemCount(): Int = list.size
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(list[position])
+    }
+    interface onItemClick {
+        fun onItemclicked(datagames: Datagames)
     }
 }
