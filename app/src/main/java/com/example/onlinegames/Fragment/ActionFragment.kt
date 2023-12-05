@@ -1,3 +1,4 @@
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import com.example.onlinegames.Adapter.ActionAdapter
 import com.example.onlinegames.Api.RetrofitClient
 import com.example.onlinegames.Data.Datagames
 import com.example.onlinegames.R
+import com.example.onlinegames.UI.DetailActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -44,7 +46,9 @@ class ActionFragment : Fragment() {
 
                 adapter.setOnItemclickcallback(object : ActionAdapter.onItemClick{
                     override fun onItemclick(datagames: Datagames) {
-                        Toast.makeText(context, datagames.title , Toast.LENGTH_SHORT).show()
+                        val intent = Intent(context, DetailActivity::class.java)
+                        intent.putExtra("data",datagames)
+                        startActivity(intent)
                     }
 
                 })

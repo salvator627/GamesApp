@@ -2,6 +2,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -37,6 +38,12 @@ class ShooterFragment : Fragment() {
                 response.body()?. let { list.addAll(it) }
                 val adapter = ShooterAdapter(list)
                 rv.adapter = adapter
+
+                adapter.setOnItemClickCallback(object : ShooterAdapter.onItemClick{
+                    override fun onItemclicked(datagames: Datagames) {
+                        Toast.makeText(context, " name : ${datagames.title}", Toast.LENGTH_SHORT).show()
+                    }
+                })
             }
 
             override fun onFailure(call: Call<ArrayList<Datagames>>, t: Throwable) {
