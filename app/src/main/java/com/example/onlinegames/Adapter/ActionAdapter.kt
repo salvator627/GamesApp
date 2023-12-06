@@ -42,4 +42,5 @@ class ActionAdapter(private val list: ArrayList<Datagames>) : RecyclerView.Adapt
     interface onItemClick{
         fun onItemclick(datagames: Datagames)
     }
+
 }
