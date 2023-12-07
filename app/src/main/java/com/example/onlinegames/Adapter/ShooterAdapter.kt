@@ -27,6 +27,9 @@ class ShooterAdapter(private val list: ArrayList<Datagames>): RecyclerView.Adapt
                 val text = findViewById<TextView>(R.id.textView)
                 text.text = datagames.title
 
+                val publisher = findViewById<TextView>(R.id.publisher)
+                publisher.text = datagames.publisher
+
                 itemView.setOnClickListener { onItemclickCallback?.onItemclicked(datagames) }
             }
         }

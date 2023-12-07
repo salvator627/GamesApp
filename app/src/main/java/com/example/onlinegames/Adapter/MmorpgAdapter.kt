@@ -26,6 +26,9 @@ class MmorpgAdapter(private val list: ArrayList<Datagames>): RecyclerView.Adapte
                 val text = findViewById<TextView>(R.id.textView)
                 text.text = data.title
 
+                val publisher = findViewById<TextView>(R.id.publisher)
+                publisher.text = data.publisher
+
                 itemView.setOnClickListener {
                     onItemClickCallback?.onItemClicked(data)
                 }

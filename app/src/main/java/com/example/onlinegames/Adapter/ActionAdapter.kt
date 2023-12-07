@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.onlinegames.Data.Datagames
 import com.example.onlinegames.R
+import org.w3c.dom.Text
 
 class ActionAdapter(private val list: ArrayList<Datagames>) : RecyclerView.Adapter<ActionAdapter.ViewHolder>() {
 
@@ -26,6 +27,9 @@ class ActionAdapter(private val list: ArrayList<Datagames>) : RecyclerView.Adapt
                     .into(img)
                 val text = findViewById<TextView>(R.id.textView)
                 text.text = datagames.title
+
+                val publisher = findViewById<TextView>(R.id.publisher)
+                publisher.text = datagames.publisher
 
                 itemView.setOnClickListener { ItemClickCallback?.onItemclick(datagames) }
             }
