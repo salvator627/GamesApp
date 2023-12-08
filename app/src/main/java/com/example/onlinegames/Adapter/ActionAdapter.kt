@@ -1,8 +1,10 @@
 package com.example.onlinegames.Adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -27,9 +29,13 @@ class ActionAdapter(private val list: ArrayList<Datagames>) : RecyclerView.Adapt
                     .into(img)
                 val text = findViewById<TextView>(R.id.textView)
                 text.text = datagames.title
-
                 val publisher = findViewById<TextView>(R.id.publisher)
                 publisher.text = datagames.publisher
+
+                val button = findViewById<Button>(R.id.button)
+                button.setOnClickListener {
+                    ItemClickCallback?.onItemclick(datagames)
+                }
 
                 itemView.setOnClickListener { ItemClickCallback?.onItemclick(datagames) }
             }
@@ -46,5 +52,4 @@ class ActionAdapter(private val list: ArrayList<Datagames>) : RecyclerView.Adapt
     interface onItemClick{
         fun onItemclick(datagames: Datagames)
     }
-
 }

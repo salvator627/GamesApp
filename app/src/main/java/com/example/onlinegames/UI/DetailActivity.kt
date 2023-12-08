@@ -24,11 +24,15 @@ class DetailActivity : AppCompatActivity() {
         val text2 = findViewById<TextView>(R.id.textView3)
         val image = findViewById<ImageView>(R.id.imageView7)
         val publisher = findViewById<TextView>(R.id.textView4)
+        val desc = findViewById<TextView>(R.id.textView7)
+        val date = findViewById<TextView>(R.id.textView9)
 
         if (title != null){
             text.text = title.title
             text2.text = title.platform
             publisher.text = title.publisher
+            desc.text = title.short_description
+            date.text = title.release_date
 
             Glide.with(this@DetailActivity)
                 .load(title.thumbnail)

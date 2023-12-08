@@ -3,6 +3,7 @@ package com.example.onlinegames.Adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -29,6 +30,12 @@ class ShooterAdapter(private val list: ArrayList<Datagames>): RecyclerView.Adapt
 
                 val publisher = findViewById<TextView>(R.id.publisher)
                 publisher.text = datagames.publisher
+
+                val button = findViewById<Button>(R.id.button)
+                button.setOnClickListener {
+                    onItemclickCallback?.onItemclicked(datagames)
+                }
+                
 
                 itemView.setOnClickListener { onItemclickCallback?.onItemclicked(datagames) }
             }

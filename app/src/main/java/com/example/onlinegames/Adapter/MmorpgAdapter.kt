@@ -3,6 +3,7 @@ package com.example.onlinegames.Adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +29,11 @@ class MmorpgAdapter(private val list: ArrayList<Datagames>): RecyclerView.Adapte
 
                 val publisher = findViewById<TextView>(R.id.publisher)
                 publisher.text = data.publisher
+
+                val button = findViewById<Button>(R.id.button)
+                button.setOnClickListener {
+                    onItemClickCallback?.onItemClicked(data)
+                }
 
                 itemView.setOnClickListener {
                     onItemClickCallback?.onItemClicked(data)

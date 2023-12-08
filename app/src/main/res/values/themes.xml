@@ -3,6 +3,10 @@
     <style name="Base.Theme.OnlineGames" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/brown</item>
+        <item name="colorPrimaryVariant">@color/brown</item>
+        <item name="colorOnPrimary">@color/brown</item>
+        <item name="android:windowBackground">@color/black</item>
     </style>
 
     <style name="Theme.OnlineGames" parent="Base.Theme.OnlineGames" />
